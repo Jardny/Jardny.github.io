@@ -1,7 +1,5 @@
-http://example.com/2023/11/08/my-first-blog/
 http://example.com/2023/11/08/Android%E5%BC%80%E5%8F%91-%E7%B1%BB%E5%BE%AE%E4%BF%A1%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89/
 http://example.com/categories/Android%E5%BC%80%E5%8F%91-%E7%B1%BB%E5%BE%AE%E4%BF%A1%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89.html
-http://example.com/categories/index.html
 http://example.com/tags/index.html
 http://example.com/2023/10/15/hello-world/
 http://example.com/about/index-1.html
