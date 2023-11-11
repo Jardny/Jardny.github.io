@@ -9,165 +9,7 @@
   },
   hexoVersion: '6.3.0'
 } </script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Jardny's Blog" type="application/atom+xml">
-</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Jardny</div><div class="author-info__description text-center">人生没有白走的路，走的每一步都算数！</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">4</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">1</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">1</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Jardny's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="{&quot;url&quot;:&quot;/&quot;}">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">Author</a></span><span class="pull-right"></span></div><div id="site-info"><div id="site-title">Jardny's Blog</div><div id="site-sub-title">个人博客</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2023/11/11/Android%E5%BC%80%E5%8F%91-%E7%B1%BB%E5%BE%AE%E4%BF%A1%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%BA%8C%EF%BC%89/">No title</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-11-11</time><div class="content"><h1 id="Android开发-类微信界面设计（二）"><a href="#Android开发-类微信界面设计（二）" class="headerlink" title="Android开发-类微信界面设计（二）"></a>Android开发-类微信界面设计（二）</h1><hr>
-<p>title: 标题<br>tags: [标签1,标签2]<br>categories: [分类]<br>index_img: 主页封面图的相对路径</p>
-<p>date: 2023-8-25 18:03:07</p>
-<hr>
-<p>title: Android开发-类微信界面设计（二）</p>
-<p>date: 2023-11-11 23:56:19<br>categories:</p>
-<ul>
-<li>安卓开发</li>
-</ul>
-<p>tags: </p>
-<ul>
-<li>安卓</li>
-<li>学习</li>
-</ul>
-<hr>
-<h2 id="一、实现效果图"><a href="#一、实现效果图" class="headerlink" title="一、实现效果图"></a>一、实现效果图</h2><p><img src="https://s2.loli.net/2023/11/11/y9lVvK7hra35dwo.png"></p>
-<p><img src="https://s2.loli.net/2023/11/11/1OLqTjzSQmyMfZ8.gif"></p>
-<h2 id="二、功能说明："><a href="#二、功能说明：" class="headerlink" title="二、功能说明："></a>二、功能说明：</h2><p>在上次实验的基础之上把recycleviewb列表完善并且<font color="red">增加点击效果</font>，点击之后可以<font color="red">跳转到另外一个activity上</font>，并且添加返回按钮，可以放回原列表页面，<font color="red">列表中的每一行都对应的不同的数据</font></p>
-<p>故需要实现的功能</p>
-<p>1：activity之间的跳转</p>
-<p>2：数据的绑定</p>
-<h2 id="三、功能实现"><a href="#三、功能实现" class="headerlink" title="三、功能实现"></a>三、功能实现</h2><h3 id="1：列表创建"><a href="#1：列表创建" class="headerlink" title="1：列表创建"></a>1：列表创建</h3><p>涉及到如下xml文件：</p>
-<p><img src="https://s2.loli.net/2023/11/11/Tqp5t1mIEeaVKXc.png"></p>
-<p>需要用到recycleview控件创建列表</p>
-<blockquote>
-<p>recycleview</p>
-</blockquote>
-<p>RecyclerView是Android中用于展示大量数据列表的高级视图组件。它是对ListView的改进和扩展，提供了更灵活、高效的方式来展示和管理大型数据集。</p>
-<p><img src="https://s2.loli.net/2023/11/11/xWJgZ7waBDYiGfO.png"></p>
-<p>recycleview是一个列表，接下来创建行item</p>
-<h4 id="设计item-xml"><a href="#设计item-xml" class="headerlink" title="设计item.xml"></a>设计item.xml</h4><p><img src="https://s2.loli.net/2023/11/11/eZF4Bg9vLNS12R3.png"></p>
-<p>头像+姓名 故添加2个控件</p>
-<p>功能为点击行之后跳转出个人的详情页面 </p>
-<h4 id="details-people-xml设计"><a href="#details-people-xml设计" class="headerlink" title="details_people.xml设计"></a>details_people.xml设计</h4><p>四个控件显示</p>
-<p>1：姓名</p>
-<p>2：电话</p>
-<p>3：地址</p>
-<p>4：朋友圈</p>
-<p>加一个button返回值列表</p>
-<p><img src="https://s2.loli.net/2023/11/11/Sn79qLWkAJVOug4.png"></p>
-<p>显示xml文件设计全部完成，接下来需要连接数据即后端</p>
-<h3 id="2：连接数据"><a href="#2：连接数据" class="headerlink" title="2：连接数据"></a>2：连接数据</h3><h4 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h4><p>往列表里面传入数据，先要创建数据源，在fragment1.java里创建list列表进行数据存储</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Map&lt;String,Object&gt;&gt; items=new ArrayList&lt;Map&lt;String,Object&gt;&gt;();</span><br></pre></td></tr></table></figure>
-
-<p>创建一个列表，列表的内容为键值对 键的内容为string ，值的内容为任意类型</p>
-<p>每一个map对象都是一个联系人，里面存储着ta的信息</p>
-<p>&#x3D;&#x3D;通过for循环存入数据&#x3D;&#x3D;</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int i=0;i&lt;names.length;i++)&#123;</span><br><span class="line">           Map&lt;String,Object&gt; item=new HashMap&lt;String, Object&gt;();</span><br><span class="line">           item.put(&quot;i_name&quot;,names[i]);</span><br><span class="line">           item.put(&quot;i_image&quot;,images[i]);</span><br><span class="line">           item.put(&quot;i_phone&quot;,phones[i]);</span><br><span class="line">           item.put(&quot;i_region&quot;,regions[i]);</span><br><span class="line">           item.put(&quot;i_tag&quot;,tags[i]);</span><br><span class="line">           items.add(item);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-
-<p>数据传入之后进行连接，把数据导入进列表</p>
-<p>需要用到adapter</p>
-<h4 id="绑定数据"><a href="#绑定数据" class="headerlink" title="绑定数据"></a>绑定数据</h4><blockquote>
-<p>Adapter</p>
-</blockquote>
-<p>是数据源和视图之间的桥梁，把数据绑定到item里</p>
-<p>里面有一个叫<font color="red">Holder的类</font>，和一个<font color="red">onBindViewHolder</font>的方法</p>
-<blockquote>
-<p>Holder</p>
-</blockquote>
-<p>在Adapter中，holder用于绑定视图</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Myholder extends RecyclerView.ViewHolder&#123;</span><br><span class="line"></span><br><span class="line">       public ImageView imageView;</span><br><span class="line">       TextView textView;</span><br><span class="line"></span><br><span class="line">       public Myholder(@NonNull View itemView) &#123;</span><br><span class="line">           super(itemView);</span><br><span class="line">           textView=itemView.findViewById(R.id.name);//引用item.xml里id为textView1的textView作为Myholder这个类中</span><br><span class="line">           imageView = (ImageView) itemView.findViewById(R.id.image);</span><br><span class="line">           //textView对象的初始值</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>如上：这个holder类绑定了item.xml的控件image和textview（他们的id分别是image和name）</p>
-<p><img src="https://s2.loli.net/2023/11/11/mAD5G4wZWSBd9iz.png" alt="image-20231111153328419"></p>
-<blockquote>
-<p>onBindViewHolder</p>
-</blockquote>
-<p>这个方法是把数据集中的数据绑定到控件中</p>
-<ul>
-<li>1：数据绑定</li>
-</ul>
-<p>name通过list位置position的不同自动获取不同的数据（position会自动变化）</p>
-<p><img src="https://s2.loli.net/2023/11/11/G8M3bcE4Q1gjhfO.png" alt="image-20231111153911926"></p>
-<ul>
-<li>2：设置跳转事件</li>
-</ul>
-<p>当点击textview控件也就是我们的name时，这个onclick函数就会响应</p>
-<p>这里有一个intent类</p>
-<blockquote>
-<p>Intent</p>
-</blockquote>
-<p>Intent用于组件之间的通信和交互可以启动其他的activity，service，broadcastRecever等组件</p>
-<p>可以</p>
-<ol>
-<li>启动组件：通过创建一个Intent对象并指定要启动的组件的类名或动作，可以启动其他应用程序中的Activity、Service或BroadcastReceiver组件。例如，你可以使用Intent启动一个新的Activity来显示一个新的界面。</li>
-<li>传递数据：Intent可以携带数据，以便在组件之间进行传递。你可以使用<code>putExtra()</code>方法将额外的数据附加到Intent中，然后在目标组件中使用<code>getXXXExtra()</code>方法获取这些数据。数据可以是基本类型（如字符串、整数等），也可以是复杂的对象。</li>
-<li>发送广播：通过创建一个Intent并指定广播的动作，你可以发送广播消息，使得其他应用程序中的BroadcastReceiver组件可以接收并处理该广播。广播可以用于应用程序内部的通信，也可以用于应用程序间的通信。</li>
-<li>打开系统功能：Intent可以用于打开系统功能，如拨打电话、发送短信、打开浏览器等。系统会根据Intent的内容选择合适的应用程序来处理请求。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">holder.textView.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">          @Override</span><br><span class="line">          public void onClick(View v) &#123;</span><br><span class="line">              //点击后跳转到联系人详情页</span><br><span class="line">              Intent intent=new Intent(context1,Activitypeople.class);</span><br><span class="line">              //向intent传值</span><br><span class="line">              intent.putExtra(&quot;details&quot;,name);</span><br><span class="line">              intent.putExtra(&quot;image&quot;,image);</span><br><span class="line">              intent.putExtra(&quot;phone&quot;,phone);</span><br><span class="line">              intent.putExtra(&quot;region&quot;,region);</span><br><span class="line">              intent.putExtra(&quot;tag&quot;,tag);</span><br><span class="line">              intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">              //开始跳转</span><br><span class="line">              context1.startActivity(intent);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>这段代码就用了intent的2个功能</p>
-<p>1：启动组件，当点击name时，从本组件跳到了activitypeople这个组件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Intent intent=new Intent(context1,Activitypeople.class);</span><br></pre></td></tr></table></figure>
-
-<p>2：数据传送，把detail，image，phone等数据放到了intent这个对象里面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">intent.putExtra(&quot;details&quot;,name);</span><br><span class="line">                intent.putExtra(&quot;image&quot;,image);</span><br><span class="line">                intent.putExtra(&quot;phone&quot;,phone);</span><br><span class="line">                intent.putExtra(&quot;region&quot;,region);</span><br><span class="line">                intent.putExtra(&quot;tag&quot;,tag);</span><br></pre></td></tr></table></figure>
-
-<p>最后从Madapter.java跳转至ActivityPeople.java</p>
-<p>这是一个activity 连接着details_people.xml</p>
-<p>也就是一个item对应的一个people的详情页面</p>
-<p>details_people.xml的效果图如下：</p>
-<p><img src="https://s2.loli.net/2023/11/11/OKGtkQsISo2glb7.png"></p>
-<p>故ActivityPeople.java中要对这个效果进行数据的绑定展示，相当数据库后端</p>
-<ul>
-<li>与xml文件绑定</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">super.onCreate(savedInstanceState);</span><br><span class="line">setContentView(R.layout.details_people);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>创建xml效果有的控件：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TextView dName,textView1,textView2;</span><br><span class="line"> ImageView dImage,aImage,cImage,pImage;</span><br><span class="line"> Button button_r;</span><br><span class="line"> View view;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>绑定控件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dName=findViewById(R.id.dname);</span><br><span class="line">dImage=findViewById(R.id.imagename);</span><br><span class="line">aImage=findViewById(R.id.imageadd);</span><br><span class="line">cImage=findViewById(R.id.imagecircle);</span><br><span class="line">pImage=findViewById(R.id.imagephone);</span><br><span class="line">textView1=findViewById(R.id.dphone);</span><br><span class="line">textView2=findViewById(R.id.dadd);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>获取从上一个activity传递过来的带有数据的intent类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//获取上一个Actvity传过来的intent</span><br><span class="line">Intent intent=getIntent();</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>设置控件获取数据</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dImage.setImageResource(intent.getIntExtra(&quot;image&quot;,R.drawable.baba));</span><br><span class="line">dName.setText(intent.getStringExtra(&quot;details&quot;));</span><br><span class="line">aImage.setImageResource(R.drawable.weizhi);</span><br><span class="line">cImage.setImageResource(R.drawable.circle);</span><br><span class="line">pImage.setImageResource(R.drawable.dianhua);</span><br><span class="line">textView1.setText(intent.getStringExtra(&quot;phone&quot;));</span><br><span class="line">textView2.setText(intent.getStringExtra(&quot;region&quot;));</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>button实现返回到原来的activity效果</li>
-</ul>
-<p>跳转到原来的Fragment1页面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button_r.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                Intent intent1=new Intent(Activitypeople.this, MainActivity.class);</span><br><span class="line">                startActivity(intent1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><font color="red">startActivity</font></p>
-</blockquote>
-<p>通过调用<code>startActivity()</code>方法，你可以向系统发出请求，以启动另一个Activity并在屏幕上显示相应的界面。</p>
-<p>这种启动是<font color="red">没有返回值的</font></p>
-<p>如果要有放回值的启动需要用到launch的启动</p>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>问题：</p>
-<h3 id="q1：详情页面效果时，地址、朋友圈等图像无法显示"><a href="#q1：详情页面效果时，地址、朋友圈等图像无法显示" class="headerlink" title="q1：详情页面效果时，地址、朋友圈等图像无法显示"></a>q1：详情页面效果时，地址、朋友圈等图像无法显示</h3><p><img src="https://s2.loli.net/2023/11/11/2F6qrMnysuROEBl.png"></p>
-<p>因为这些image都是固定的，而不是根据position变化而变化的，上网查找发现在<code>onBindViewHolder()</code>方法中，为ImageView设置固定图像资源时，不使用<code>position</code>参数获取列表项的位置对应的图像资源，而是直接定义获取图像资源如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cImage=findViewById(R.id.imagecircle);</span><br><span class="line">cImage.setImageResource(R.drawable.circle);</span><br></pre></td></tr></table></figure>
-
-<p>而根据position变化而变的图像、文字连接：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dName=findViewById(R.id.dname);</span><br><span class="line">dName.setText(intent.getStringExtra(&quot;details&quot;));</span><br></pre></td></tr></table></figure>
-
-<h3 id="q2：效果显示时地址无法显示"><a href="#q2：效果显示时地址无法显示" class="headerlink" title="q2：效果显示时地址无法显示"></a>q2：效果显示时地址无法显示</h3><p><img src="https://s2.loli.net/2023/11/11/Ah2t1qNiyW4fmFV.png"></p>
-<p>查看代码后发现 绑定数据时region单词拼写错误，导致地址数据无法绑定完成</p>
-<p><img src="https://s2.loli.net/2023/11/11/Y4pCusEtAQyzNmI.png"></p>
-<p><img src="https://s2.loli.net/2023/11/11/Kx5UuG8WhNp3str.png"></p>
-<h3 id="q3：网上无法找到大小一致的图片"><a href="#q3：网上无法找到大小一致的图片" class="headerlink" title="q3：网上无法找到大小一致的图片"></a>q3：网上无法找到大小一致的图片</h3><p>前期使用的是网上随便找的图片，导致设计xml文件时，格式无法控制，效果显示不佳</p>
-<p><img src="https://s2.loli.net/2023/11/11/8xE6rqziuG3nlRI.png"></p>
-<p>后面询问同学得知可以在<a target="_blank" rel="noopener" href="https://www.iconfont.cn/collections/index?spm=a313x.home_index.i1.1.58a33a81f2mOyh&page=4">iconfont-阿里巴巴矢量图标库</a>内进行图标选取，这个库里面的图大小基本一致并且数量种类丰富，可以免费使用</p>
-<p>android开发对于我来说是一种全新的体验，遇到的困难很多，同时带来的锻炼也是巨大的，收益匪浅，通过一个个解决困难的过程，感觉到了自己在一步步成长</p>
-<p>源码地址：<a target="_blank" rel="noopener" href="https://gitee.com/jardny/My_AndroidWork">https://gitee.com/jardny/My_AndroidWork</a></p>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/11/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%EF%BC%88%E4%BA%8C%EF%BC%89/">操作系统实验（二）</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-11-11</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a></span><div class="content"><h2 id="1-实验目标"><a href="#1-实验目标" class="headerlink" title="1 实验目标"></a><strong>1</strong> <strong>实验目标</strong></h2><p>1、理解进程的概念</p>
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Jardny</div><div class="author-info__description text-center">人生没有白走的路，走的每一步都算数！</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">4</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">3</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">2</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Jardny's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="{&quot;url&quot;:&quot;/&quot;}">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">Author</a></span><span class="pull-right"></span></div><div id="site-info"><div id="site-title">Jardny's Blog</div><div id="site-sub-title">个人博客</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2023/11/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%EF%BC%88%E4%BA%8C%EF%BC%89/">操作系统实验（二）</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-11-11</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a></span><div class="content"><h2 id="1-实验目标"><a href="#1-实验目标" class="headerlink" title="1 实验目标"></a><strong>1</strong> <strong>实验目标</strong></h2><p>1、理解进程的概念</p>
 <p>2、掌握创建进程并能理解子进程和父进程的交互关系</p>
 <p>3、掌握进程的状态转换</p>
 <h2 id="2-实验工具"><a href="#2-实验工具" class="headerlink" title="2 实验工具"></a><strong>2</strong> <strong>实验工具</strong></h2><p>(1) 硬件环境: AMD Ryzen 7 5800H with Radeon Graphics</p>
@@ -219,7 +61,7 @@
 <p>后经过调试解决</p>
 <p>通过此次实验，将操作系统的进程和大一所学的C语言大作业结合了起来，知识之间有了关联，印象更加深刻</p>
 <p>通过几个任务进一步了解了进程的知识</p>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/11/08/Android%E5%BC%80%E5%8F%91-%E7%B1%BB%E5%BE%AE%E4%BF%A1%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89/">No title</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-11-08</time><div class="content"><h1 id="Android开发-类微信界面设计（一）"><a href="#Android开发-类微信界面设计（一）" class="headerlink" title="Android开发-类微信界面设计（一）"></a>Android开发-类微信界面设计（一）</h1><hr>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/11/08/Android%E5%BC%80%E5%8F%91-%E7%B1%BB%E5%BE%AE%E4%BF%A1%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89/">No title</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-11-08</time><div class="content"><hr>
 <p>title: Android开发-类微信界面设计（一）<br>date: 2023-10-27 12:57:36<br>categories:</p>
 <ul>
 <li>安卓开发</li>
@@ -230,7 +72,7 @@
 <li>学习</li>
 </ul>
 <hr>
-<h2 id="一、实现效果图如下："><a href="#一、实现效果图如下：" class="headerlink" title="一、实现效果图如下："></a>一、实现效果图如下：</h2><p><img src="https://s2.loli.net/2023/11/10/ef9xXPBC1iQmEgo.png" alt="image-20231014171856284"></p>
+<h1 id="Android开发-类微信界面设计（一）"><a href="#Android开发-类微信界面设计（一）" class="headerlink" title="Android开发-类微信界面设计（一）"></a>Android开发-类微信界面设计（一）</h1><h2 id="一、实现效果图如下："><a href="#一、实现效果图如下：" class="headerlink" title="一、实现效果图如下："></a>一、实现效果图如下：</h2><p><img src="https://s2.loli.net/2023/11/10/ef9xXPBC1iQmEgo.png" alt="image-20231014171856284"></p>
 <p><img src="https://gitee.com/jardny/typora_images/raw/master/images/%E5%8A%A8%E7%94%BB.gif" alt="动画"></p>
 <h2 id="二、功能说明："><a href="#二、功能说明：" class="headerlink" title="二、功能说明："></a>二、功能说明：</h2><p>设计一个类微信的主界面UI，有&#x3D;&#x3D;上中下&#x3D;&#x3D;三个结构，包含&#x3D;&#x3D;四个界面&#x3D;&#x3D;：聊天、联系人、位置、设置，并且实现&#x3D;&#x3D;点击下方进行界面跳转&#x3D;&#x3D;，并且在其中一个tab界面&#x3D;&#x3D;显示列表效果&#x3D;&#x3D;</p>
 <h2 id="三、知识点简单介绍"><a href="#三、知识点简单介绍" class="headerlink" title="三、知识点简单介绍"></a>三、知识点简单介绍</h2><p>在Android开发中，<strong>XML文件</strong>和<strong>Java文件</strong>是两种主要的文件类型，用于定义和控制应用程序的布局、界面和功能。</p>
@@ -419,6 +261,149 @@
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 <p> <a href="E:\Pictures\Jardny.ico">Jardny.<img src="/">ico</a> E:\Pictures\Jardny.ico</p>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/08/25/Android%E5%BC%80%E5%8F%91-%E7%B1%BB%E5%BE%AE%E4%BF%A1%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%BA%8C%EF%BC%89/">标题</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-08-25</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E5%88%86%E7%B1%BB/">分类</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E6%A0%87%E7%AD%BE1/">标签1</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/%E6%A0%87%E7%AD%BE2/">标签2</a></span><div class="content"><h1 id="Android开发-类微信界面设计（二）"><a href="#Android开发-类微信界面设计（二）" class="headerlink" title="Android开发-类微信界面设计（二）"></a>Android开发-类微信界面设计（二）</h1><h2 id="一、实现效果图"><a href="#一、实现效果图" class="headerlink" title="一、实现效果图"></a>一、实现效果图</h2><p><img src="https://s2.loli.net/2023/11/11/y9lVvK7hra35dwo.png"></p>
+<p><img src="https://s2.loli.net/2023/11/11/1OLqTjzSQmyMfZ8.gif"></p>
+<h2 id="二、功能说明："><a href="#二、功能说明：" class="headerlink" title="二、功能说明："></a>二、功能说明：</h2><p>在上次实验的基础之上把recycleviewb列表完善并且<font color="red">增加点击效果</font>，点击之后可以<font color="red">跳转到另外一个activity上</font>，并且添加返回按钮，可以放回原列表页面，<font color="red">列表中的每一行都对应的不同的数据</font></p>
+<p>故需要实现的功能</p>
+<p>1：activity之间的跳转</p>
+<p>2：数据的绑定</p>
+<h2 id="三、功能实现"><a href="#三、功能实现" class="headerlink" title="三、功能实现"></a>三、功能实现</h2><h3 id="1：列表创建"><a href="#1：列表创建" class="headerlink" title="1：列表创建"></a>1：列表创建</h3><p>涉及到如下xml文件：</p>
+<p><img src="https://s2.loli.net/2023/11/11/Tqp5t1mIEeaVKXc.png"></p>
+<p>需要用到recycleview控件创建列表</p>
+<blockquote>
+<p>recycleview</p>
+</blockquote>
+<p>RecyclerView是Android中用于展示大量数据列表的高级视图组件。它是对ListView的改进和扩展，提供了更灵活、高效的方式来展示和管理大型数据集。</p>
+<p><img src="https://s2.loli.net/2023/11/11/xWJgZ7waBDYiGfO.png"></p>
+<p>recycleview是一个列表，接下来创建行item</p>
+<h4 id="设计item-xml"><a href="#设计item-xml" class="headerlink" title="设计item.xml"></a>设计item.xml</h4><p><img src="https://s2.loli.net/2023/11/11/eZF4Bg9vLNS12R3.png"></p>
+<p>头像+姓名 故添加2个控件</p>
+<p>功能为点击行之后跳转出个人的详情页面 </p>
+<h4 id="details-people-xml设计"><a href="#details-people-xml设计" class="headerlink" title="details_people.xml设计"></a>details_people.xml设计</h4><p>四个控件显示</p>
+<p>1：姓名</p>
+<p>2：电话</p>
+<p>3：地址</p>
+<p>4：朋友圈</p>
+<p>加一个button返回值列表</p>
+<p><img src="https://s2.loli.net/2023/11/11/Sn79qLWkAJVOug4.png"></p>
+<p>显示xml文件设计全部完成，接下来需要连接数据即后端</p>
+<h3 id="2：连接数据"><a href="#2：连接数据" class="headerlink" title="2：连接数据"></a>2：连接数据</h3><h4 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h4><p>往列表里面传入数据，先要创建数据源，在fragment1.java里创建list列表进行数据存储</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Map&lt;String,Object&gt;&gt; items=new ArrayList&lt;Map&lt;String,Object&gt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>创建一个列表，列表的内容为键值对 键的内容为string ，值的内容为任意类型</p>
+<p>每一个map对象都是一个联系人，里面存储着ta的信息</p>
+<p>&#x3D;&#x3D;通过for循环存入数据&#x3D;&#x3D;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int i=0;i&lt;names.length;i++)&#123;</span><br><span class="line">           Map&lt;String,Object&gt; item=new HashMap&lt;String, Object&gt;();</span><br><span class="line">           item.put(&quot;i_name&quot;,names[i]);</span><br><span class="line">           item.put(&quot;i_image&quot;,images[i]);</span><br><span class="line">           item.put(&quot;i_phone&quot;,phones[i]);</span><br><span class="line">           item.put(&quot;i_region&quot;,regions[i]);</span><br><span class="line">           item.put(&quot;i_tag&quot;,tags[i]);</span><br><span class="line">           items.add(item);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+<p>数据传入之后进行连接，把数据导入进列表</p>
+<p>需要用到adapter</p>
+<h4 id="绑定数据"><a href="#绑定数据" class="headerlink" title="绑定数据"></a>绑定数据</h4><blockquote>
+<p>Adapter</p>
+</blockquote>
+<p>是数据源和视图之间的桥梁，把数据绑定到item里</p>
+<p>里面有一个叫<font color="red">Holder的类</font>，和一个<font color="red">onBindViewHolder</font>的方法</p>
+<blockquote>
+<p>Holder</p>
+</blockquote>
+<p>在Adapter中，holder用于绑定视图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Myholder extends RecyclerView.ViewHolder&#123;</span><br><span class="line"></span><br><span class="line">       public ImageView imageView;</span><br><span class="line">       TextView textView;</span><br><span class="line"></span><br><span class="line">       public Myholder(@NonNull View itemView) &#123;</span><br><span class="line">           super(itemView);</span><br><span class="line">           textView=itemView.findViewById(R.id.name);//引用item.xml里id为textView1的textView作为Myholder这个类中</span><br><span class="line">           imageView = (ImageView) itemView.findViewById(R.id.image);</span><br><span class="line">           //textView对象的初始值</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上：这个holder类绑定了item.xml的控件image和textview（他们的id分别是image和name）</p>
+<p><img src="https://s2.loli.net/2023/11/11/mAD5G4wZWSBd9iz.png" alt="image-20231111153328419"></p>
+<blockquote>
+<p>onBindViewHolder</p>
+</blockquote>
+<p>这个方法是把数据集中的数据绑定到控件中</p>
+<ul>
+<li>1：数据绑定</li>
+</ul>
+<p>name通过list位置position的不同自动获取不同的数据（position会自动变化）</p>
+<p><img src="https://s2.loli.net/2023/11/11/G8M3bcE4Q1gjhfO.png" alt="image-20231111153911926"></p>
+<ul>
+<li>2：设置跳转事件</li>
+</ul>
+<p>当点击textview控件也就是我们的name时，这个onclick函数就会响应</p>
+<p>这里有一个intent类</p>
+<blockquote>
+<p>Intent</p>
+</blockquote>
+<p>Intent用于组件之间的通信和交互可以启动其他的activity，service，broadcastRecever等组件</p>
+<p>可以</p>
+<ol>
+<li>启动组件：通过创建一个Intent对象并指定要启动的组件的类名或动作，可以启动其他应用程序中的Activity、Service或BroadcastReceiver组件。例如，你可以使用Intent启动一个新的Activity来显示一个新的界面。</li>
+<li>传递数据：Intent可以携带数据，以便在组件之间进行传递。你可以使用<code>putExtra()</code>方法将额外的数据附加到Intent中，然后在目标组件中使用<code>getXXXExtra()</code>方法获取这些数据。数据可以是基本类型（如字符串、整数等），也可以是复杂的对象。</li>
+<li>发送广播：通过创建一个Intent并指定广播的动作，你可以发送广播消息，使得其他应用程序中的BroadcastReceiver组件可以接收并处理该广播。广播可以用于应用程序内部的通信，也可以用于应用程序间的通信。</li>
+<li>打开系统功能：Intent可以用于打开系统功能，如拨打电话、发送短信、打开浏览器等。系统会根据Intent的内容选择合适的应用程序来处理请求。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">holder.textView.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">          @Override</span><br><span class="line">          public void onClick(View v) &#123;</span><br><span class="line">              //点击后跳转到联系人详情页</span><br><span class="line">              Intent intent=new Intent(context1,Activitypeople.class);</span><br><span class="line">              //向intent传值</span><br><span class="line">              intent.putExtra(&quot;details&quot;,name);</span><br><span class="line">              intent.putExtra(&quot;image&quot;,image);</span><br><span class="line">              intent.putExtra(&quot;phone&quot;,phone);</span><br><span class="line">              intent.putExtra(&quot;region&quot;,region);</span><br><span class="line">              intent.putExtra(&quot;tag&quot;,tag);</span><br><span class="line">              intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">              //开始跳转</span><br><span class="line">              context1.startActivity(intent);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这段代码就用了intent的2个功能</p>
+<p>1：启动组件，当点击name时，从本组件跳到了activitypeople这个组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Intent intent=new Intent(context1,Activitypeople.class);</span><br></pre></td></tr></table></figure>
+
+<p>2：数据传送，把detail，image，phone等数据放到了intent这个对象里面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">intent.putExtra(&quot;details&quot;,name);</span><br><span class="line">                intent.putExtra(&quot;image&quot;,image);</span><br><span class="line">                intent.putExtra(&quot;phone&quot;,phone);</span><br><span class="line">                intent.putExtra(&quot;region&quot;,region);</span><br><span class="line">                intent.putExtra(&quot;tag&quot;,tag);</span><br></pre></td></tr></table></figure>
+
+<p>最后从Madapter.java跳转至ActivityPeople.java</p>
+<p>这是一个activity 连接着details_people.xml</p>
+<p>也就是一个item对应的一个people的详情页面</p>
+<p>details_people.xml的效果图如下：</p>
+<p><img src="https://s2.loli.net/2023/11/11/OKGtkQsISo2glb7.png"></p>
+<p>故ActivityPeople.java中要对这个效果进行数据的绑定展示，相当数据库后端</p>
+<ul>
+<li>与xml文件绑定</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">super.onCreate(savedInstanceState);</span><br><span class="line">setContentView(R.layout.details_people);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建xml效果有的控件：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TextView dName,textView1,textView2;</span><br><span class="line"> ImageView dImage,aImage,cImage,pImage;</span><br><span class="line"> Button button_r;</span><br><span class="line"> View view;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>绑定控件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dName=findViewById(R.id.dname);</span><br><span class="line">dImage=findViewById(R.id.imagename);</span><br><span class="line">aImage=findViewById(R.id.imageadd);</span><br><span class="line">cImage=findViewById(R.id.imagecircle);</span><br><span class="line">pImage=findViewById(R.id.imagephone);</span><br><span class="line">textView1=findViewById(R.id.dphone);</span><br><span class="line">textView2=findViewById(R.id.dadd);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取从上一个activity传递过来的带有数据的intent类</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//获取上一个Actvity传过来的intent</span><br><span class="line">Intent intent=getIntent();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置控件获取数据</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dImage.setImageResource(intent.getIntExtra(&quot;image&quot;,R.drawable.baba));</span><br><span class="line">dName.setText(intent.getStringExtra(&quot;details&quot;));</span><br><span class="line">aImage.setImageResource(R.drawable.weizhi);</span><br><span class="line">cImage.setImageResource(R.drawable.circle);</span><br><span class="line">pImage.setImageResource(R.drawable.dianhua);</span><br><span class="line">textView1.setText(intent.getStringExtra(&quot;phone&quot;));</span><br><span class="line">textView2.setText(intent.getStringExtra(&quot;region&quot;));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>button实现返回到原来的activity效果</li>
+</ul>
+<p>跳转到原来的Fragment1页面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button_r.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                Intent intent1=new Intent(Activitypeople.this, MainActivity.class);</span><br><span class="line">                startActivity(intent1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><font color="red">startActivity</font></p>
+</blockquote>
+<p>通过调用<code>startActivity()</code>方法，你可以向系统发出请求，以启动另一个Activity并在屏幕上显示相应的界面。</p>
+<p>这种启动是<font color="red">没有返回值的</font></p>
+<p>如果要有放回值的启动需要用到launch的启动</p>
+<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>问题：</p>
+<h3 id="q1：详情页面效果时，地址、朋友圈等图像无法显示"><a href="#q1：详情页面效果时，地址、朋友圈等图像无法显示" class="headerlink" title="q1：详情页面效果时，地址、朋友圈等图像无法显示"></a>q1：详情页面效果时，地址、朋友圈等图像无法显示</h3><p><img src="https://s2.loli.net/2023/11/11/2F6qrMnysuROEBl.png"></p>
+<p>因为这些image都是固定的，而不是根据position变化而变化的，上网查找发现在<code>onBindViewHolder()</code>方法中，为ImageView设置固定图像资源时，不使用<code>position</code>参数获取列表项的位置对应的图像资源，而是直接定义获取图像资源如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cImage=findViewById(R.id.imagecircle);</span><br><span class="line">cImage.setImageResource(R.drawable.circle);</span><br></pre></td></tr></table></figure>
+
+<p>而根据position变化而变的图像、文字连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dName=findViewById(R.id.dname);</span><br><span class="line">dName.setText(intent.getStringExtra(&quot;details&quot;));</span><br></pre></td></tr></table></figure>
+
+<h3 id="q2：效果显示时地址无法显示"><a href="#q2：效果显示时地址无法显示" class="headerlink" title="q2：效果显示时地址无法显示"></a>q2：效果显示时地址无法显示</h3><p><img src="https://s2.loli.net/2023/11/11/Ah2t1qNiyW4fmFV.png"></p>
+<p>查看代码后发现 绑定数据时region单词拼写错误，导致地址数据无法绑定完成</p>
+<p><img src="https://s2.loli.net/2023/11/11/Y4pCusEtAQyzNmI.png"></p>
+<p><img src="https://s2.loli.net/2023/11/11/Kx5UuG8WhNp3str.png"></p>
+<h3 id="q3：网上无法找到大小一致的图片"><a href="#q3：网上无法找到大小一致的图片" class="headerlink" title="q3：网上无法找到大小一致的图片"></a>q3：网上无法找到大小一致的图片</h3><p>前期使用的是网上随便找的图片，导致设计xml文件时，格式无法控制，效果显示不佳</p>
+<p><img src="https://s2.loli.net/2023/11/11/8xE6rqziuG3nlRI.png"></p>
+<p>后面询问同学得知可以在<a target="_blank" rel="noopener" href="https://www.iconfont.cn/collections/index?spm=a313x.home_index.i1.1.58a33a81f2mOyh&page=4">iconfont-阿里巴巴矢量图标库</a>内进行图标选取，这个库里面的图大小基本一致并且数量种类丰富，可以免费使用</p>
+<p>android开发对于我来说是一种全新的体验，遇到的困难很多，同时带来的锻炼也是巨大的，收益匪浅，通过一个个解决困难的过程，感觉到了自己在一步步成长</p>
+<p>源码地址：<a target="_blank" rel="noopener" href="https://gitee.com/jardny/My_AndroidWork">https://gitee.com/jardny/My_AndroidWork</a></p>
 </div><hr></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2023 By Jardny</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
