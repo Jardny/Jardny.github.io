@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Fakebook</title>
+      <link href="/2023/11/22/Fakebook/"/>
+      <url>/2023/11/22/Fakebook/</url>
+      
+        <content type="html"><![CDATA[<h2 id="网鼎杯-2018-Fakebook"><a href="#网鼎杯-2018-Fakebook" class="headerlink" title="[网鼎杯 2018]Fakebook"></a>[网鼎杯 2018]Fakebook</h2><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311241628057.png" alt="image-20231124162841814"></p><p>先join进行注册</p><p>然后有url 进行测试</p><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311241631909.png" alt="image-20231124163143685"></p><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311241632657.png" alt="image-20231124163223478"></p><p>当输入5的时候出现</p><p>4没有，故 列数为4</p><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311241633626.png" alt="image-20231124163329565"></p><p>是数字型的</p><p>出现no hack 应该是进行过滤了</p><p>1：用内联注释进行绕过</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union /*!select*/ 1,2,3,4#</span><br></pre></td></tr></table></figure><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311241706177.png" alt="image-20231124170651670"></p><p>2：采用union all select 进行绕过</p><p>可以进行绕过</p><p>因为是sql注入</p><p>还是直接用sqlmap跑</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web每日一题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+            <tag> 刷题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CheckIn</title>
       <link href="/2023/11/21/%5BSUCTF-2019%5DCheckIn/"/>
       <url>/2023/11/21/%5BSUCTF-2019%5DCheckIn/</url>
